@@ -1,0 +1,11 @@
+name: deploy-1
+version: v1.0
+stages:
+  - stage: deploy
+    jobs:
+      - job: deploy-job
+        steps:
+          - script:
+              name: Deploy app
+              script: |
+                echo "Deploying app to environment"

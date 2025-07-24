@@ -1,0 +1,43 @@
+name: MyFirstWorkflow
+version: v2.0
+workflow:
+  build:
+    pipeline: build-1
+    application: MyFirstWorkflow
+
+  deploy-dev:
+    depends_on:
+      - build
+    pipeline: deploy-1
+    application: MyFirstWorkflow
+    environment: MyFirstWorkflow-dev
+
+  it-dev:
+    depends_on:
+      - deploy-dev
+    pipeline: it-1
+    application: MyFirstWorkflow
+    environment: MyFirstWorkflow-dev
+
+  fork:
+    depends_on:
+      - it-dev
+
+  deploy-preprod:
+    depends_on:
+      - fork
+    when:
+      - success
+    pipeline: deploy-1
+    application: MyFirstWorkflow
+    environment: MyFirstWorkflow-preprod
+
+  deploy-prod:
+    depends_on:
+      - fork
+    when:
+      - success
+      - manual
+    pipeline: deploy-1
+    application: MyFirstWorkflow
+    environment: MyFirstWorkflow-prod
