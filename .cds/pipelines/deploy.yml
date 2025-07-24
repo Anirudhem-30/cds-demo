@@ -1,0 +1,11 @@
+name: deploy
+version: v1.0
+stages:
+  - stage: deploy
+    jobs:
+      - job: deploy
+        steps:
+          - script:
+              name: Deploy App
+              script: |
+                echo "Deploying to production..."

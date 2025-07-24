@@ -1,4 +1,4 @@
-name: build-1
+name: build
 version: v1.0
 stages:
   - stage: build
@@ -6,6 +6,6 @@ stages:
       - job: compile
         steps:
           - script:
-              name: Compile code
+              name: Compile
               script: |
-                echo "Building app..."
+                echo "Building project..."
