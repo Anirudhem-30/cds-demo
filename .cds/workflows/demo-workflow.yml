@@ -1,0 +1,4 @@
+name: demo-workflow
+version: v1.0
+pipelines:
+  - name: demo-pipeline
